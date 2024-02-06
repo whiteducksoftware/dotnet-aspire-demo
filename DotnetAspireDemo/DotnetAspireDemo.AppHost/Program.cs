@@ -2,7 +2,11 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache");
 
-var apiService = builder.AddProject<Projects.DotnetAspireDemo_ApiService>("apiservice");
+var blobs = builder.AddAzureStorage("storage")
+    .AddBlobs("blobs");
+
+var apiService = builder.AddProject<Projects.DotnetAspireDemo_ApiService>("apiservice")
+    .WithReference(blobs);
 
 builder.AddProject<Projects.DotnetAspireDemo_Web>("webfrontend")
     .WithReference(cache)

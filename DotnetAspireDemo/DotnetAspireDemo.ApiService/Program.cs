@@ -1,3 +1,5 @@
+using DotnetAspireDemo.ApiService.Weather;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
@@ -5,6 +7,8 @@ builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
+
+builder.AddAzureBlobService("blobs");
 
 var app = builder.Build();
 
@@ -26,14 +30,17 @@ app.MapGet("/weatherforecast", () =>
             summaries[Random.Shared.Next(summaries.Length)]
         ))
         .ToArray();
+
     return forecast;
+});
+
+app.MapPost("/weatherforecast", async (WeatherForecast forecast, WeatherForecastService service) =>
+{
+    await service.SaveWeatherForecast(forecast);
+
+    return Results.Created($"/todoitems", forecast);
 });
 
 app.MapDefaultEndpoints();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

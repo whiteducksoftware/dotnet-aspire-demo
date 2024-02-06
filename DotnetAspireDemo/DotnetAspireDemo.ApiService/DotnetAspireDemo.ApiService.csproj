@@ -11,4 +11,8 @@
     <ProjectReference Include="..\DotnetAspireDemo.ServiceDefaults\DotnetAspireDemo.ServiceDefaults.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Aspire.Azure.Storage.Blobs" Version="8.0.0-preview.2.23619.3" />
+  </ItemGroup>
+
 </Project>

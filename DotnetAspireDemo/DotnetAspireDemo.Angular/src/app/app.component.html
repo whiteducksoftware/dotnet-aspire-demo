@@ -74,6 +74,10 @@
           </tr>
         </tbody>
       </table>
+      <button (click)="storeForecast(forecasts)"></button>
+      <div>
+        {{ storeForecastResult() }}
+      </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
