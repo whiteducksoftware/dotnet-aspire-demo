@@ -29,7 +29,6 @@ export class AppComponent {
   storeForecast(forecast: WeatherForecasts) {
     this.http
       .post<WeatherForecasts>('api/weatherforecast', forecast)
-      .pipe(takeUntilDestroyed())
       .subscribe((result) => {
         next: this.storeForecastResult.set('Stored weather forecasts successfully');
         error: console.error;

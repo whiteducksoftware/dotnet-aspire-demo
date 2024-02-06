@@ -5,6 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 
+builder.Services.AddScoped<WeatherForecastService>();
+
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
@@ -34,7 +36,7 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 });
 
-app.MapPost("/weatherforecast", async (WeatherForecast forecast, WeatherForecastService service) =>
+app.MapPost("/weatherforecast", async (WeatherForecast[] forecast, WeatherForecastService service) =>
 {
     await service.SaveWeatherForecast(forecast);
 
