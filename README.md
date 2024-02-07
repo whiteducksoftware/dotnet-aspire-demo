@@ -13,7 +13,7 @@ This is a demo project for Dotnet Aspire. It demonstrates how Aspire wires up a 
 ## Getting Started
 
 1. Clone the repository
-2. Use your own Azure Blob Storage service uri in the `DotnetAspireDemo.ApiService/appsettings.json` file. Authenticate with your Azure account using the Azure CLI.
+2. Use your own Azure Blob Storage service uri in the `DotnetAspireDemo.AppHost/appsettings.json` file. Authenticate with your Azure account using the Azure CLI.
 3. Open the project in Visual Studio Code
 4. Open the terminal and run
 
